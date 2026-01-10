@@ -46,17 +46,18 @@ BOLD=$(tput smul)                   # Texto en underline
 BOLD=$(tput blink)                  # Texto en blick
 
 # preset
-TEXT_COLOR=$BLACK
+TEXT_COLOR=$WHITE
 INFO_COLOR=$BG_BLUE
 WARN_COLOR=$BG_YELLOW
 ERROR_COLOR=$BG_RED
 
+# mode
+if [ $MODE = "light" ]; then
+    TEXT_COLOR=$BLACK
+fi
+
 # Logs
 function log () {
-    if [ $MODE = "black" ]; then
-        TEXT_COLOR=$WHITE
-    fi
-    DATE_COLOR=$NONE
     case "$1" in
         "info")
             BG_COLOR=$INFO_COLOR
@@ -77,30 +78,14 @@ function log () {
     printf "$(date) ${TYPE_COLOR}${BG_COLOR}${TEXT_COLOR} ${LOG_TYPE} ${NONE} $2\n"
 }
 
-# Logs
-function pprint () {
-    TEXT_COLOR=$BLACK
-    DATE_COLOR=$NONE
-    case "$1" in
-        "info")
-            BG_COLOR=$INFO_COLOR
-            LOG_TYPE="INFO"
-            ;;
-        "warn")
-            BG_COLOR=$WARN_COLOR
-            LOG_TYPE="WARNING"
-            ;;
-        "error")
-            BG_COLOR=$ERROR_COLOR
-            LOG_TYPE="ERROR"
-            ;;
-        *)
-            BG_COLOR=$NONE
-            ;;
-    esac
-    printf "$(date) ${TYPE_COLOR}${BG_COLOR}${TEXT_COLOR} ${LOG_TYPE} ${NONE} $2\n"
+# Colors prints
+function blue () {
+    printf "${BLUE}$1${NONE}"
 }
 
-log info code
-log warn code
-log error code
+function bgBlue () {
+    printf "${BG_BLUE}${TEXT_COLOR}$1${NONE}"
+}
+
+printf "$(blue code)\n"
+printf "$(bgBlue code)\n"
