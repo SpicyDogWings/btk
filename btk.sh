@@ -1,7 +1,11 @@
 #!/bin/bash
 
+# Detalles
+# Version=1.0 
+
 # Configuración
-MODE="light"
+# Usar MODE existente si está definido, sino usar "light" como valor por defecto
+MODE="${MODE:-light}"
 
 # Colores básicos
 BLACK=$(tput setaf 0)           # Negro
@@ -75,7 +79,7 @@ function log () {
             BG_COLOR=$NONE
             ;;
     esac
-    printf "$(date) ${TYPE_COLOR}${BG_COLOR}${TEXT_COLOR} ${LOG_TYPE} ${NONE} $2\n"
+    printf "$(date) ${BG_COLOR}${TEXT_COLOR} ${LOG_TYPE} ${NONE} $2\n"
 }
 
 # Text color functions
