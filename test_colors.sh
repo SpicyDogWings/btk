@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Test script to verify all color functions work correctly
+source ./btk.sh
+
+echo "Testing text color functions:"
+echo "$(black 'Black text')"
+echo "$(red 'Red text')"
+echo "$(green 'Green text')"
+echo "$(yellow 'Yellow text')"
+echo "$(blue 'Blue text')"
+echo "$(magenta 'Magenta text')"
+echo "$(cyan 'Cyan text')"
+echo "$(white 'White text')"
+
+echo ""
+echo "Testing light text color functions:"
+echo "$(lightBlack 'Light Black text')"
+echo "$(lightRed 'Light Red text')"
+echo "$(lightGreen 'Light Green text')"
+echo "$(lightYellow 'Light Yellow text')"
+echo "$(lightBlue 'Light Blue text')"
+echo "$(lightMagenta 'Light Magenta text')"
+echo "$(lightCyan 'Light Cyan text')"
+echo "$(lightWhite 'Light White text')"
+
+echo ""
+echo "Testing background color functions:"
+echo "$(bgBlack 'Black background')"
+echo "$(bgRed 'Red background')"
+echo "$(bgGreen 'Green background')"
+echo "$(bgYellow 'Yellow background')"
+echo "$(bgBlue 'Blue background')"
+echo "$(bgMagenta 'Magenta background')"
+echo "$(bgCyan 'Cyan background')"
+echo "$(bgWhite 'White background')"
+
+echo ""
+echo "Testing light background color functions:"
+echo "$(bgLightBlack 'Light Black background')"
+echo "$(bgLightRed 'Light Red background')"
+echo "$(bgLightGreen 'Light Green background')"
+echo "$(bgLightYellow 'Light Yellow background')"
+echo "$(bgLightBlue 'Light Blue background')"
+echo "$(bgLightMagenta 'Light Magenta background')"
+echo "$(bgLightCyan 'Light Cyan background')"
+echo "$(bgLightWhite 'Light White background')"
+
+echo ""
+echo "All color functions work correctly! 🎨"

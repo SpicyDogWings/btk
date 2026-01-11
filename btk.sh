@@ -78,14 +78,105 @@ function log () {
     printf "$(date) ${TYPE_COLOR}${BG_COLOR}${TEXT_COLOR} ${LOG_TYPE} ${NONE} $2\n"
 }
 
-# Colors prints
+# Text color functions
+function black () {
+    printf "${BLACK}$1${NONE}"
+}
+function red () {
+    printf "${RED}$1${NONE}"
+}
+function green () {
+    printf "${GREEN}$1${NONE}"
+}
+function yellow () {
+    printf "${YELLOW}$1${NONE}"
+}
 function blue () {
     printf "${BLUE}$1${NONE}"
 }
+function magenta () {
+    printf "${MAGENTA}$1${NONE}"
+}
+function cyan () {
+    printf "${CYAN}$1${NONE}"
+}
+function white () {
+    printf "${WHITE}$1${NONE}"
+}
+function lightBlack () {
+    printf "${LIGHT_BLACK}$1${NONE}"
+}
+function lightRed () {
+    printf "${LIGHT_RED}$1${NONE}"
+}
+function lightGreen () {
+    printf "${LIGHT_GREEN}$1${NONE}"
+}
+function lightYellow () {
+    printf "${LIGHT_YELLOW}$1${NONE}"
+}
+function lightBlue () {
+    printf "${LIGHT_BLUE}$1${NONE}"
+}
+function lightMagenta () {
+    printf "${LIGHT_MAGENTA}$1${NONE}"
+}
+function lightCyan () {
+    printf "${LIGHT_CYAN}$1${NONE}"
+}
+function lightWhite () {
+    printf "${LIGHT_WHITE}$1${NONE}"
+}
 
+# Background color functions
+function bgBlack () {
+    printf "${BG_BLACK}${TEXT_COLOR}$1${NONE}"
+}
+function bgRed () {
+    printf "${BG_RED}${TEXT_COLOR}$1${NONE}"
+}
+function bgGreen () {
+    printf "${BG_GREEN}${TEXT_COLOR}$1${NONE}"
+}
+function bgYellow () {
+    printf "${BG_YELLOW}${TEXT_COLOR}$1${NONE}"
+}
 function bgBlue () {
     printf "${BG_BLUE}${TEXT_COLOR}$1${NONE}"
 }
+function bgMagenta () {
+    printf "${BG_MAGENTA}${TEXT_COLOR}$1${NONE}"
+}
+function bgCyan () {
+    printf "${BG_CYAN}${TEXT_COLOR}$1${NONE}"
+}
+function bgWhite () {
+    printf "${BG_WHITE}${TEXT_COLOR}$1${NONE}"
+}
+function bgLightBlack () {
+    printf "${BG_LIGHT_BLACK}${TEXT_COLOR}$1${NONE}"
+}
+function bgLightRed () {
+    printf "${BG_LIGHT_RED}${TEXT_COLOR}$1${NONE}"
+}
+function bgLightGreen () {
+    printf "${BG_LIGHT_GREEN}${TEXT_COLOR}$1${NONE}"
+}
+function bgLightYellow () {
+    printf "${BG_LIGHT_YELLOW}${TEXT_COLOR}$1${NONE}"
+}
+function bgLightBlue () {
+    printf "${BG_LIGHT_BLUE}${TEXT_COLOR}$1${NONE}"
+}
+function bgLightMagenta () {
+    printf "${BG_LIGHT_MAGENTA}${TEXT_COLOR}$1${NONE}"
+}
+function bgLightCyan () {
+    printf "${BG_LIGHT_CYAN}${TEXT_COLOR}$1${NONE}"
+}
+function bgLightWhite () {
+    printf "${BG_LIGHT_WHITE}${TEXT_COLOR}$1${NONE}"
+}
 
-printf "$(blue code)\n"
-printf "$(bgBlue code)\n"
+# Test examples showing consistent API usage
+printf "$(bgBlue ' Blue text ')\n"
