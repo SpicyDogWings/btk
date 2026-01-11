@@ -63,31 +63,49 @@ WARN_COLOR=$BG_YELLOW
 ERROR_COLOR=$BG_RED
 
 # mode
-if [ $MODE = "light" ]; then
-    TEXT_COLOR=$BLACK
+if [ "$MODE" = "light" ]; then
+    TEXT_COLOR="$BLACK"
+else
+    TEXT_COLOR="$WHITE"
 fi
 
+
 # Logs
-function log () {
-    case "$1" in
+function log() {
+    local type="$1"
+    local message="$2"
+    local bg_color="$NONE"
+    local text_color="$TEXT_COLOR"
+
+    case "$type" in
         "info")
-            BG_COLOR=$INFO_COLOR
+            bg_color="$BG_BLUE"
             LOG_TYPE="INFO"
             ;;
         "warn")
-            BG_COLOR=$WARN_COLOR
+            bg_color="$BG_YELLOW"
             LOG_TYPE="WARNING"
             ;;
         "error")
-            BG_COLOR=$ERROR_COLOR
+            bg_color="$BG_RED"
             LOG_TYPE="ERROR"
             ;;
+        "success")
+            bg_color="$BG_GREEN"
+            LOG_TYPE="SUCCESS"
+            ;;
+        "debug")
+            bg_color="$BG_LIGHT_BLACK"
+            text_color="$LIGHT_CYAN"
+            LOG_TYPE="DEBUG"
+            ;;
         *)
-            BG_COLOR=$NONE
+            bg_color="$NONE"
             ;;
     esac
-    printf "$(date) ${BG_COLOR}${TEXT_COLOR} ${LOG_TYPE} ${NONE} $2\n"
+    printf "%s %s%s%s %s\n" "$(date)" "$bg_color$text_color" " $LOG_TYPE " "$NONE" "$message"
 }
+
 
 # Text color functions
 function black () {
@@ -191,3 +209,8 @@ function bgLightWhite () {
 
 # Test examples showing consistent API usage
 printf "$(bgBlue ' Blue text ')\n"
+log debug hola
+log error hola
+log success hola
+log warn hola
+log info hola
