@@ -207,10 +207,3 @@ function bgLightWhite () {
     printf "${BG_LIGHT_WHITE}${TEXT_COLOR}$1${NONE}"
 }
 
-# Test examples showing consistent API usage
-printf "$(bgBlue ' Blue text ')\n"
-log debug hola
-log error hola
-log success hola
-log warn hola
-log info hola
