@@ -1,7 +1,13 @@
 #!/bin/bash
 
 # Detalles
-# Version=1.0 
+# Version=1.0
+
+# Verificaciones
+if ! command -v tput &> /dev/null; then
+    echo "Error: 'tput' no está instalado. Este script requiere 'tput' para funcionar correctamente."
+    exit 1
+fi
 
 # Configuración
 # Usar MODE existente si está definido, sino usar "light" como valor por defecto
@@ -45,9 +51,10 @@ BG_LIGHT_WHITE=$(tput setab 15)     # Fondo blanco claro
 
 # Vaiaciones
 NONE=$(tput sgr0)                   # Resetear color
-BOLD=$(tput bold)                   # Texto en bold
-BOLD=$(tput smul)                   # Texto en underline
-BOLD=$(tput blink)                  # Texto en blick
+BOLD=$(tput bold)                   # Texto en negrita
+UNDERLINE=$(tput smul)              # Texto subrayado
+BLINK=$(tput blink)                 # Texto parpadeante
+
 
 # preset
 TEXT_COLOR=$WHITE

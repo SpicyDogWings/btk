@@ -25,42 +25,14 @@ El script `btk.sh` proporciona las siguientes funcionalidades:
 - `log "error" "mensaje"`: Muestra un mensaje de error con fondo rojo
 
 ### Funciones de Color de Texto
-- `black "texto"`: Muestra texto en color negro
-- `red "texto"`: Muestra texto en color rojo
-- `green "texto"`: Muestra texto en color verde
-- `yellow "texto"`: Muestra texto en color amarillo
-- `blue "texto"`: Muestra texto en color azul
-- `magenta "texto"`: Muestra texto en color magenta
-- `cyan "texto"`: Muestra texto en color cyan
-- `white "texto"`: Muestra texto en color blanco
-- `lightBlack "texto"`: Muestra texto en color negro claro
-- `lightRed "texto"`: Muestra texto en color rojo claro
-- `lightGreen "texto"`: Muestra texto en color verde claro
-- `lightYellow "texto"`: Muestra texto en color amarillo claro
-- `lightBlue "texto"`: Muestra texto en color azul claro
-- `lightMagenta "texto"`: Muestra texto en color magenta claro
-- `lightCyan "texto"`: Muestra texto en color cyan claro
-- `lightWhite "texto"`: Muestra texto en color blanco claro
+- `black "texto"`, `red "texto"`, `green "texto"`, `yellow "texto"`, `blue "texto"`, `magenta "texto"`, `cyan "texto"`, `white "texto"`: Muestra texto en el color especificado
+- `lightBlack "texto"`, `lightRed "texto"`, `lightGreen "texto"`, `lightYellow "texto"`, `lightBlue "texto"`, `lightMagenta "texto"`, `lightCyan "texto"`, `lightWhite "texto"`: Muestra texto en el color claro especificado
 
 ### Funciones de Color de Fondo
-- `bgBlack "texto"`: Muestra texto con fondo negro
-- `bgRed "texto"`: Muestra texto con fondo rojo
-- `bgGreen "texto"`: Muestra texto con fondo verde
-- `bgYellow "texto"`: Muestra texto con fondo amarillo
-- `bgBlue "texto"`: Muestra texto con fondo azul
-- `bgMagenta "texto"`: Muestra texto con fondo magenta
-- `bgCyan "texto"`: Muestra texto con fondo cyan
-- `bgWhite "texto"`: Muestra texto con fondo blanco
-- `bgLightBlack "texto"`: Muestra texto con fondo negro claro
-- `bgLightRed "texto"`: Muestra texto con fondo rojo claro
-- `bgLightGreen "texto"`: Muestra texto con fondo verde claro
-- `bgLightYellow "texto"`: Muestra texto con fondo amarillo claro
-- `bgLightBlue "texto"`: Muestra texto con fondo azul claro
-- `bgLightMagenta "texto"`: Muestra texto con fondo magenta claro
-- `bgLightCyan "texto"`: Muestra texto con fondo cyan claro
-- `bgLightWhite "texto"`: Muestra texto con fondo blanco claro
+- `bgBlack "texto"`, `bgRed "texto"`, `bgGreen "texto"`, `bgYellow "texto"`, `bgBlue "texto"`, `bgMagenta "texto"`, `bgCyan "texto"`, `bgWhite "texto"`: Muestra texto con el fondo del color especificado
+- `bgLightBlack "texto"`, `bgLightRed "texto"`, `bgLightGreen "texto"`, `bgLightYellow "texto"`, `bgLightBlue "texto"`, `bgLightMagenta "texto"`, `bgLightCyan "texto"`, `bgLightWhite "texto"`: Muestra texto con el fondo del color claro especificado
 
-### Configuración
+## Configuración
 - `MODE`: Variable para cambiar entre modo claro (`"light"`) y oscuro (`"dark"`). Por defecto está en modo claro.
 - `TEXT_COLOR`: Color del texto por defecto (blanco en modo oscuro, negro en modo claro)
 - `INFO_COLOR`: Color de fondo para mensajes de información (azul)
