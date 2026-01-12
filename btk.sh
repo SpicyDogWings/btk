@@ -1,7 +1,11 @@
 #!/bin/bash
 
+
+
 # Detalles
 # Version=1.0
+
+
 
 # Verificaciones
 if ! command -v tput &> /dev/null; then
@@ -9,9 +13,13 @@ if ! command -v tput &> /dev/null; then
     exit 1
 fi
 
+
+
 # Configuración
 # Usar MODE existente si está definido, sino usar "light" como valor por defecto
 MODE="${MODE:-light}"
+
+
 
 # Colores básicos
 BLACK=$(tput setaf 0)           # Negro
@@ -30,7 +38,6 @@ LIGHT_BLUE=$(tput setaf 12)     # Azul claro
 LIGHT_MAGENTA=$(tput setaf 13)  # Magenta
 LIGHT_CYAN=$(tput setaf 14)     # Cyan
 LIGHT_WHITE=$(tput setaf 15)    # Blanco
-
 # Colores de fondo
 BG_BLACK=$(tput setab 0)            # Fondo negro
 BG_RED=$(tput setab 1)              # Fondo rojo
@@ -48,12 +55,12 @@ BG_LIGHT_BLUE=$(tput setab 12)      # Fondo azul claro
 BG_LIGHT_MAGENTA=$(tput setab 13)   # Fondo magenta claro
 BG_LIGHT_CYAN=$(tput setab 14)      # Fondo cyan claro
 BG_LIGHT_WHITE=$(tput setab 15)     # Fondo blanco claro
-
-# Vaiaciones
+# Variaciones
 NONE=$(tput sgr0)                   # Resetear color
 BOLD=$(tput bold)                   # Texto en negrita
 UNDERLINE=$(tput smul)              # Texto subrayado
 BLINK=$(tput blink)                 # Texto parpadeante
+
 
 
 # preset
@@ -62,12 +69,15 @@ INFO_COLOR=$BG_BLUE
 WARN_COLOR=$BG_YELLOW
 ERROR_COLOR=$BG_RED
 
+
+
 # mode
 if [ "$MODE" = "light" ]; then
     TEXT_COLOR="$BLACK"
 else
     TEXT_COLOR="$WHITE"
 fi
+
 
 
 # Logs
@@ -156,7 +166,6 @@ function lightCyan () {
 function lightWhite () {
     printf "${LIGHT_WHITE}$1${NONE}"
 }
-
 # Background color functions
 function bgBlack () {
     printf "${BG_BLACK}${TEXT_COLOR}$1${NONE}"
