@@ -7,9 +7,9 @@ Este es un conjunto de herramientas para facilitar el uso de bash en un solo arc
 
 ## Instalación
 
-1. Instalar btk descargando el script .sh del repo, la última versión estable (v2.1).
+1. Instalar btk descargando el script .sh del repo, la última versión estable (v2.0).
 ``` bash
-curl -L -o btk.sh https://github.com/SpicyDogWings/btk/releases/download/v2.1/btk.sh
+curl -L -o btk.sh https://github.com/SpicyDogWings/btk/releases/download/v2.0/btk.sh
 ```
 Luego hacer la importación en el script de automatización que vayas a hacer.
 ``` bash
