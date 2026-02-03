@@ -1,6 +1,6 @@
 # Bash Tool Kit (BTK)
 
-**Versión 2.0 (Refactored)** - Sistema avanzado de colores y logging para scripts bash
+**Versión 1.1 (Refactored)** - Sistema avanzado de colores y logging para scripts bash
 
 Este es un conjunto de herramientas para facilitar el uso de bash en un solo archivo, proporcionando un sistema completo de logging con colores, estilos de texto y personalización de temas.
 
