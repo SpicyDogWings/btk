@@ -1,15 +1,15 @@
 # Bash Tool Kit (BTK)
 
-**Versión 1.1 (Refactored)** - Sistema avanzado de colores y logging para scripts bash
+**Versión 2.0 (Con soporte printf)** - Sistema avanzado de colores y logging para scripts bash
 
-Este es un conjunto de herramientas para facilitar el uso de bash en un solo archivo, proporcionando un sistema completo de logging con colores, estilos de texto y personalización de temas.
+Este es un conjunto de herramientas para facilitar el uso de bash en un solo archivo, proporcionando un sistema completo de logging con colores, estilos de texto, personalización de temas y soporte completo para formateo printf.
 
 
 ## Instalación
 
-1. Instalar btk descargando el script .sh del repo, la última versión estable.
+1. Instalar btk descargando el script .sh del repo, la última versión estable (v2.1).
 ``` bash
-curl -L -o btk.sh https://github.com/SpicyDogWings/btk/releases/download/$RELEASE_VERSION/btk.sh
+curl -L -o btk.sh https://github.com/SpicyDogWings/btk/releases/download/v2.1/btk.sh
 ```
 Luego hacer la importación en el script de automatización que vayas a hacer.
 ``` bash
@@ -21,7 +21,7 @@ source ./btk.sh
 
 El script `btk.sh` proporciona las siguientes funcionalidades:
 
-### Funciones de Logging
+### Funciones de Logging (con soporte printf)
 - `log "info" "mensaje"`: Muestra un mensaje de información con fondo azul
 - `log "warn" "mensaje"`: Muestra un mensaje de advertencia con fondo amarillo  
 - `log "error" "mensaje"`: Muestra un mensaje de error con fondo rojo
@@ -32,23 +32,28 @@ El script `btk.sh` proporciona las siguientes funcionalidades:
 - `log_error "mensaje"`: Atajo para log de error
 - `log_success "mensaje"`: Atajo para log de éxito
 - `log_debug "mensaje"`: Atajo para log de depuración
+- Todas las funciones de logging ahora soportan formateo printf: `log_info "Servicio %s iniciado en puerto %d" "nginx" 8080`
 
-### Funciones de Color de Texto
+### Funciones de Color de Texto (con soporte printf)
 - `black "texto"`, `red "texto"`, `green "texto"`, `yellow "texto"`, `blue "texto"`, `magenta "texto"`, `cyan "texto"`, `white "texto"`: Muestra texto en el color especificado
 - `lightBlack "texto"`, `lightRed "texto"`, `lightGreen "texto"`, `lightYellow "texto"`, `lightBlue "texto"`, `lightMagenta "texto"`, `lightCyan "texto"`, `lightWhite "texto"`: Muestra texto en el color claro especificado
+- Todas las funciones de color ahora soportan formateo printf: `red "Error %d: %s" 404 "Página no encontrada"`
 
-### Funciones de Color de Fondo
+### Funciones de Color de Fondo (con soporte printf)
 - `bgBlack "texto"`, `bgRed "texto"`, `bgGreen "texto"`, `bgYellow "texto"`, `bgBlue "texto"`, `bgMagenta "texto"`, `bgCyan "texto"`, `bgWhite "texto"`: Muestra texto con el fondo del color especificado
 - `bgLightBlack "texto"`, `bgLightRed "texto"`, `bgLightGreen "texto"`, `bgLightYellow "texto"`, `bgLightBlue "texto"`, `bgLightMagenta "texto"`, `bgLightCyan "texto"`, `bgLightWhite "texto"`: Muestra texto con el fondo del color claro especificado
+- Todas las funciones de fondo ahora soportan formateo printf: `bgBlue "Pod %s tiene %d réplicas" "nginx-123" 3`
 
-### Funciones de Estilo
+### Funciones de Estilo (con soporte printf)
 - `bold "texto"`: Muestra texto en negrita
 - `underline "texto"`: Muestra texto subrayado
 - `blink "texto"`: Muestra texto parpadeante
+- Todas las funciones de estilo ahora soportan formateo printf: `bold "Hola %s, bienvenido" "Juan"`
 
-### Funciones Avanzadas
+### Funciones Avanzadas (con soporte printf)
 - `custom_color "FG_COLOR" "BG_COLOR" "texto"`: Crea combinaciones personalizadas de colores
 - `set_theme "text_color" "info_color" "warn_color" "error_color" "success_color" "debug_color"`: Cambia el tema dinámicamente
+- Todas las funciones avanzadas ahora soportan formateo printf: `custom_color "WHITE" "BLUE" "Usuario %s tiene %d mensajes" "juan" 5`
 
 ## Configuración
 
@@ -60,6 +65,21 @@ El script `btk.sh` proporciona las siguientes funcionalidades:
 - `ERROR_COLOR`: Color de fondo para mensajes de error (rojo)
 - `SUCCESS_COLOR`: Color de fondo para mensajes de éxito (verde)
 - `DEBUG_COLOR`: Color de fondo para mensajes de depuración (gris oscuro)
+
+### Soporte de Formato printf
+
+Todas las funciones ahora soportan formateo printf para una mayor flexibilidad:
+
+- **Formatos soportados**: `%s` (string), `%d` (decimal), `%f` (float), y todos los formatos estándar de printf
+- **Uso**: `funcion "formato" arg1 arg2 ...`
+- **Ejemplos**:
+  - `log_info "Servicio %s iniciado en puerto %d" "nginx" 8080`
+  - `red "Error %d: %s" 404 "Página no encontrada"`
+  - `bgBlue "Pod %s tiene %d réplicas" "nginx-123" 3`
+  - `bold "Hola %s, bienvenido" "Juan"`
+  - `custom_color "WHITE" "BLUE" "Usuario %s tiene %d mensajes" "juan" 5`
+
+La función `_format_text` interna maneja todo el procesamiento de formato, asegurando compatibilidad hacia atrás con el uso anterior sin formato.
 
 ### Arrays Asociativos
 El script utiliza arrays asociativos para una gestión eficiente de colores y estilos:
@@ -77,7 +97,7 @@ Referencias de los colores y estilos en bash:
 
 ## Ejemplo de Uso
 
-Aquí tienes un ejemplo completo de cómo usar las funciones de `btk.sh` en tu script:
+Aquí tienes un ejemplo completo de cómo usar las funciones de `btk.sh` en tu script, incluyendo el nuevo soporte printf:
 
 ```bash
 #!/bin/bash
@@ -88,42 +108,69 @@ source ./btk.sh
 # Configuración (opcional)
 MODE="dark"  # Cambiar a modo oscuro
 
-# Ejemplo de uso de funciones de log
+# Ejemplo de uso de funciones de log (con soporte printf)
 log_info "Este es un mensaje informativo"
 log_warn "Este es un mensaje de advertencia"
 log_error "Este es un mensaje de error"
 log_success "Operación completada con éxito"
 log_debug "Depuración: valor de variable = $valor"
 
-# Ejemplo de uso de colores de texto
+# Ejemplo de uso de funciones de log con formato printf
+log_info "Servicio %s iniciado en puerto %d" "nginx" 8080
+log_error "Error %d: %s" 404 "Página no encontrada"
+log_success "Tarea %s completada en %d segundos" "backup" 120
+
+# Ejemplo de uso de colores de texto (con soporte printf)
 echo "$(red 'Texto rojo')"
 echo "$(green 'Texto verde')"
 echo "$(blue 'Texto azul')"
 echo "$(lightRed 'Texto rojo claro')"
 echo "$(lightGreen 'Texto verde claro')"
 
-# Ejemplo de uso de colores de fondo
+# Ejemplo de colores de texto con formato printf
+echo "$(red "Error %d: %s" 404 "Página no encontrada")"
+echo "$(green "Temperatura: %.1f°C" 23.5)"
+echo "$(blue "Usuario %s conectado desde %s" "juan" "192.168.1.100")"
+
+# Ejemplo de uso de colores de fondo (con soporte printf)
 echo "$(bgRed 'Fondo rojo')"
 echo "$(bgGreen 'Fondo verde')"
 echo "$(bgBlue 'Fondo azul')"
 echo "$(bgLightRed 'Fondo rojo claro')"
 echo "$(bgLightGreen 'Fondo verde claro')"
 
-# Ejemplo de uso de estilos
+# Ejemplo de colores de fondo con formato printf
+echo "$(bgBlue "Pod %s tiene %d réplicas" "nginx-123" 3)"
+echo "$(bgGreen "Cluster: %s | Nodos: %d" "produccion" 5)"
+echo "$(bgLightBlue "Usuario %s tiene %d mensajes nuevos" "juan" 5)"
+
+# Ejemplo de uso de estilos (con soporte printf)
 echo "$(bold 'Texto en negrita')"
 echo "$(underline 'Texto subrayado')"
 echo "$(blink 'Texto parpadeante')"
+
+# Ejemplo de estilos con formato printf
+echo "$(bold "Hola %s, bienvenido" "Juan")"
+echo "$(underline "Archivo %s modificado el %s" "config.yaml" "2023-11-15")"
+echo "$(blink "Alerta: %s en %d segundos" "reinicio" 30)"
 
 # Combinación de colores y estilos
 echo "$(bgYellow $(bold $(black 'Fondo amarillo con texto negro en negrita')))"
 echo "$(bgLightBlue $(lightWhite 'Fondo azul claro con texto blanco claro'))"
 
-# Funciones avanzadas
+# Combinaciones con formato printf
+echo "$(bgYellow $(bold $(black "Servidor %s: %d%% CPU") "web-01" 85))"
+echo "$(bgLightBlue $(lightWhite "Cluster %s: %d nodos activos") "produccion" 8))"
+
+# Funciones avanzadas (con soporte printf)
 echo "$(custom_color "WHITE" "BLUE" "Texto personalizado: blanco sobre azul")"
+echo "$(custom_color "WHITE" "BLUE" "Usuario %s tiene %d mensajes" "juan" 5)"
+echo "$(custom_color "RED" "YELLOW" "Alerta: %s - Nivel %d" "CPU alta" 3)"
 
 # Cambiar tema dinámicamente
 set_theme "${FG_COLORS[BLACK]}" "${BG_COLORS[CYAN]}" "${BG_COLORS[RED]}" "${BG_COLORS[MAGENTA]}" "${BG_COLORS[YELLOW]}" "${BG_COLORS[LIGHT_BLACK]}"
 log_info "Este mensaje usa el nuevo tema"
+log_info "Servicio %s con nuevo tema" "api-gateway"
 ```
 
 Este ejemplo muestra cómo:

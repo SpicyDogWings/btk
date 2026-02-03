@@ -7,7 +7,7 @@
 source ./btk.sh
 
 echo "=========================================="
-echo "BTK - Bash ToolKit v2.0 - Test Suite"
+echo "BTK - Bash ToolKit v2.1 - Test Suite (Con soporte printf)"
 echo "=========================================="
 echo
 
@@ -38,6 +38,15 @@ log_error "This is an error message"
 log_debug "Debug information for developers"
 echo
 
+# Test 4b: Funciones de logging con formato printf
+echo "4b. Testing logging functions with printf format:"
+log_info "Service %s started on port %d" "nginx" 8080
+log_success "Task %s completed in %d seconds" "backup" 120
+log_warn "Warning: %s usage is %d%%" "CPU" 95
+log_error "Error %d: %s" 404 "Page not found"
+log_debug "Debug: variable %s = %s" "status" "running"
+echo
+
 # Test 5: Funciones rápidas de logging
 echo "5. Testing quick logging functions:"
 log_info "Quick info message"
@@ -47,11 +56,27 @@ log_success "Quick success"
 log_debug "Quick debug"
 echo
 
+# Test 5b: Funciones rápidas de logging con formato printf
+echo "5b. Testing quick logging functions with printf format:"
+log_info "User %s logged in from %s" "juan" "192.168.1.100"
+log_warn "Disk %s is %d%% full" "/dev/sda1" 85
+log_error "Connection to %s failed: %s" "database" "timeout"
+log_success "File %s transferred: %d bytes" "data.txt" 1024
+log_debug "Function %s executed in %.2f seconds" "process_data" 2.45
+echo
+
 # Test 6: Función custom_color
 echo "6. Testing custom_color function:"
 custom_color "WHITE" "BLUE" " White on Blue "
 custom_color "BLACK" "LIGHT_GREEN" " Black on Light Green "
 custom_color "RED" "YELLOW" " Red on Yellow "
+echo
+
+# Test 6b: Función custom_color con formato printf
+echo "6b. Testing custom_color function with printf format:"
+custom_color "WHITE" "BLUE" "User %s has %d messages" "juan" 5
+custom_color "RED" "YELLOW" "Alert: %s - Level %d" "High CPU" 3
+custom_color "BLACK" "LIGHT_GREEN" "Status: %s (%d%%)" "Running" 100
 echo
 
 # Test 7: Combinaciones complejas
@@ -118,6 +143,17 @@ echo "15. Testing advanced multicolor patterns:"
 echo "   $(red 'R')$(green 'G')$(blue 'B') - Rainbow effect"
 echo "   $(bgRed ' R ')$(bgGreen ' G ')$(bgBlue ' B ') - Background rainbow"
 echo "   $(bold $(red 'B')$(green 'o')$(blue 'l')$(magenta 'd') $(cyan 'R')$(yellow 'a')$(white 'i')$(lightRed 'n')$(lightGreen 'b')$(lightBlue 'o')$(lightMagenta 'w'))"
+echo
+
+# Test 16: Pruebas completas de formato printf
+echo "16. Testing comprehensive printf format support:"
+echo "   String formatting: $(red "Name: %s" "Juan")"
+echo "   Decimal formatting: $(green "Count: %d" 42)"
+echo "   Float formatting: $(blue "Temperature: %.1f°C" 23.5)"
+echo "   Multiple args: $(bgBlue "Pod %s: %d replicas, status %s" "nginx-123" 3 "running")"
+echo "   Mixed types: $(bgGreen "User %s (ID: %d) has %.2f credits" "juan" 1001 15.75)"
+echo "   Percentage: $(bgYellow "CPU usage: %d%%" 85)"
+echo "   Complex nested: $(bgLightBlue $(bold $(white "Server %s: %d%% CPU, %d%% RAM") "web-01" 75 60))"
 echo
 
 echo "=========================================="
